@@ -10,3 +10,8 @@ Route::get('/', function () {
 Route::get('/tupoksi', function () {
     return view('tupoksi');
 })->name('tupoksi');
+
+
+Route::get('/struktur', function () {
+    return view('struktur');
+})->name('struktur');

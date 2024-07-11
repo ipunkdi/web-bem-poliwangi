@@ -10,7 +10,7 @@
         </div>
     </div>
     <div class="w-full flex justify-center">
-        <span class="block h-[3px] bg-black w-3/4 -mt-8 "></span>
+        <span class="block h-[3px] bg-white w-3/4 -mt-8 "></span>
     </div>
    
 
@@ -23,7 +23,7 @@
         </div>
     </div>
     <div class="w-full flex justify-center">
-        <span class="block h-[3px] bg-black w-3/4 -mt-8 "></span>
+        <span class="block h-[3px] bg-white w-3/4 -mt-8 "></span>
     </div>
       <div class="flex items-center justify-center bg-slate-600 px-8 py-20 h-auto  ">
         <img src="{{ asset('image/logo/dagri.png') }}" alt="Luar Negeri Logo" class="w-56 h-56 mr-4">
@@ -35,6 +35,6 @@
         </div>
     </div>
     <div class="w-full flex justify-center">
-        <span class="block h-[3px] bg-black w-3/4 -mt-8 "></span>
+        <span class="block h-[3px] bg-white w-3/4 -mt-8 "></span>
     </div>
 @endsection
