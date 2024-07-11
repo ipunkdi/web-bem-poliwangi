@@ -22,10 +22,13 @@
 <body>
     <header class='flex border-b py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide relative z-50'>
         <div class='flex flex-wrap items-center gap-4 w-full'>
-            <a href="javascript:void(0)"><img src="{{ asset('image/logo/poliwangiBem.png') }}" alt="logo"
+            <a href="javascript:void(0)" class="flex">
+                <img src="{{ asset('image/logo/poliwangiBem.png') }}" alt="logo"
                     class='w-14' />
+                    <span class="font-bold pt-2 pl-6 block">Badan Eksekutif Mahasiswa
+                        <span class="block font-medium text-sm" >Politeknik Negeri Banyuwangi</span>
+                    </span>
             </a>
-            <p class="font-bold">Badan Eksekutif Mahasiswa</p>
 
             <div id="collapseMenu"
                 class='lg:!flex lg:flex-auto lg:ml-12 max-lg:hidden max-lg:before:fixed max-lg:before:bg-black max-lg:before:opacity-50 max-lg:before:inset-0 max-lg:before:z-50'>
@@ -66,14 +69,14 @@
 
                     <ul class='lg:flex lg:items-center  max-lg:block lg:space-x-8 ml-auto'>
                         <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'>
-                            <a href='javascript:void(0)'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Home</a>
+                            <a href='{{route('landingpage')}}'
+                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>HOME</a>
                         </li>
-                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='javascript:void(0)'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Struktural</a>
+                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href=''
+                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>STRUKTUR</a>
                         </li>
-                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='javascript:void(0)'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Tupoksi</a>
+                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{route('tupoksi')}}'
+                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>TUPOKSI</a>
                         </li>
                         <li>
                             <div class="-ms-12 bg-transparent flex flex-col justify-center">
@@ -98,13 +101,13 @@
                                                 <div class="py-1">
                                                     <a href="" tabindex="0"
                                                         class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
-                                                        role="menuitem">DAGRI</a>
+                                                        role="menuitem">DALAM NEGERI</a>
                                                     <a href="" tabindex="1"
                                                         class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
-                                                        role="menuitem">LUGRI</a>
+                                                        role="menuitem">LUAR NEGERI</a>
                                                     <a href="" tabindex="2"
                                                         class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
-                                                        role="menuitem">MEDINFO</a>
+                                                        role="menuitem">MEDIA DIGITAL INFORMASI</a>
                                                 </div>
                                             </div>
                                         </div>
