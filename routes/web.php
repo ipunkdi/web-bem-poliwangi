@@ -15,3 +15,7 @@ Route::get('/tupoksi', function () {
 Route::get('/struktur', function () {
     return view('struktur');
 })->name('struktur');
+
+Route::get('/kastrat-media', function () {
+    return view('kastratMedia');
+})->name('kastrat');

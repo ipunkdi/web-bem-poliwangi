@@ -72,6 +72,10 @@
                             <a href='{{route('landingpage')}}'
                                 class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>HOME</a>
                         </li>
+                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'>
+                            <a href='{{route('kastrat')}}'
+                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>KASTRAT MEDIA</a>
+                        </li>
                         <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{route('struktur')}}'
                                 class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>STRUKTUR</a>
                         </li>
@@ -122,7 +126,7 @@
             <div class='flex items-center ml-10 space-x-6'>
                 <button
                     class='px-4 py-2.5 text-sm rounded font-bold text-white border-2 border-[#1d294f] bg-[#1d294f] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1d294f]'>
-                    Lapor Kesma</button>
+                    LAPOR KESMA</button>
 
                 <button id="toggleOpen" class='lg:hidden'>
                     <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">
