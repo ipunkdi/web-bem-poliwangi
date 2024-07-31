@@ -3,7 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
-use App\Http\Controllers\DashboardController;
+use App\Http\Controllers\DashboardKastratController;
 
 Route::get('/', function () {
     return view('home', [
@@ -21,4 +21,9 @@ Route::post('/login', [LoginController::class, 'authenticate']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
 // Dashboard
-Route::get('/dashboard', [DashboardController::class, 'index'])->middleware('auth');
+Route::get('/dashboard', function() {
+    return view('dashboard.index', ['title' => 'Dashboard']);
+})->middleware('auth');
+
+Route::get('/dashboard/kastrats/checkSlug', [DashboardKastratController::class, 'checkSlug'])->middleware('auth');
+Route::resource('/dashboard/kastrats', DashboardKastratController::class)->middleware('auth');

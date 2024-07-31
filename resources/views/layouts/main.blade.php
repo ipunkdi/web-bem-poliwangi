@@ -9,12 +9,15 @@
     <title>BEM Poliwangi | {{ $title }}</title>
 </head>
 <body>
+    {{-- Header --}}
     @include('partials.header')
     
+    {{-- Main --}}
     <div>
         @yield('container')
     </div>
 
+    {{-- Footer --}}
     @include('partials.footer')
 </body>
 </html>
