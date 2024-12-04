@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardKastratController;
+use App\Http\Controllers\DashboardKementerianController;
 
 Route::get('/', function () {
     return view('home', [
@@ -25,5 +26,9 @@ Route::get('/dashboard', function() {
     return view('dashboard.index', ['title' => 'Dashboard']);
 })->middleware('auth');
 
+// Dashboard Kastrat
 Route::get('/dashboard/kastrats/checkSlug', [DashboardKastratController::class, 'checkSlug'])->middleware('auth');
 Route::resource('/dashboard/kastrats', DashboardKastratController::class)->middleware('auth');
+
+// Dashboard Kementerian
+Route::resource('/dashboard/kementerians', DashboardKementerianController::class)->middleware('auth')->middleware('auth');

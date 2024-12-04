@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
 use App\Models\Kastrat;
-use Illuminate\Http\Request;
-use \Cviebrock\EloquentSluggable\Services\SlugService;
 use Illuminate\Support\Str;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
+use \Cviebrock\EloquentSluggable\Services\SlugService;
 
 class DashboardKastratController extends Controller
 {
@@ -39,17 +40,19 @@ class DashboardKastratController extends Controller
         $validatedData = $request->validate([
             'title' => 'required|max:255',
             'slug' => 'required|unique:kastrats',
-            'image' => 'image|file|max:1024',
+            'image' => 'required|image|file|max:5120',
             'body' => 'required'
         ]);
-
+        
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('kastrat-images');
         }
-
+        
+        $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-
+        
         Kastrat::create($validatedData);
+    
 
         return redirect('/dashboard/kastrats')->with('success', 'New post has been added!');
     }
@@ -83,18 +86,18 @@ class DashboardKastratController extends Controller
     {
         $rules = [
             'title' => 'required|max:255',
-            'image' => 'image|file|max:1024',
+            'image' => 'image|file|max:5120',
             'body' => 'required'
         ];
 
-        if($request->slug != $kastrat->slug) {
+        if ($request->slug != $kastrat->slug) {
             $rules['slug'] = 'required|unique:kastrats';
         }
 
         $validatedData = $request->validate($rules);
 
         if ($request->file('image')) {
-            if($request->oldImage) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('kastrat-images');
@@ -103,7 +106,7 @@ class DashboardKastratController extends Controller
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
 
         Kastrat::where('id', $kastrat->id)
-                    ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/dashboard/kastrats')->with('success', 'Post has been updated!');
     }
@@ -113,7 +116,7 @@ class DashboardKastratController extends Controller
      */
     public function destroy(Kastrat $kastrat)
     {
-        if($kastrat->image) {
+        if ($kastrat->image) {
             Storage::delete($kastrat->image);
         }
         Kastrat::destroy($kastrat->id);

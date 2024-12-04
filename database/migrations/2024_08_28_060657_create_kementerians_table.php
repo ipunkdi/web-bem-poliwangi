@@ -11,14 +11,11 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('kastrats', function (Blueprint $table) {
+        Schema::create('kementerians', function (Blueprint $table) {
             $table->id();
-            $table->string('title');
-            $table->string('slug')->unique();
+            $table->string('name')->required();
             $table->string('image')->required();
-            $table->text('excerpt');
-            $table->text('body');
-            $table->timestamp('published_at')->nullable();
+            $table->string('description')->required();
             $table->timestamps();
         });
     }
@@ -28,6 +25,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('kastrats');
+        Schema::dropIfExists('kementerians');
     }
 };
