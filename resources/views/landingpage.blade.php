@@ -8,7 +8,7 @@
         <img src="{{ asset('image/fotbar.png') }}" alt="Banner Image" class="absolute inset-0 w-full h-full object-cover" />
 
         <div
-            class="min-h-[600px] relative z-50 h-full max-w-6xl mx-auto flex flex-col justify-start items-start text-center text-white px-6 pt-40 ">
+            class="min-h-[600px] relative z-40 h-full max-w-6xl mx-auto flex flex-col justify-start items-start text-center text-white px-6 pt-40 ">
             <div class="bg-black/25 text-start rounded-md py-2 px-2 ">
                 <h3 class="sm:text-4xl lg:text-lg ">Badan Eksekutif Mahasiswa 2024</h3>
                 <p class="sm:text-3xl lg:text-4xl font-bold mb-6">AVISKARA ADHIGANA</p>

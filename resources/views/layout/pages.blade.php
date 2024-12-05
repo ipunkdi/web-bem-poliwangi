@@ -20,7 +20,7 @@
 </head>
 
 <body>
-    <header class='flex border-b py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide relative z-50'>
+    <header class='fixed flex right-0 left-0 border-b py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide z-50'>
         <div class='flex flex-wrap items-center gap-4 w-full'>
             <a href="javascript:void(0)" class="flex">
                 <img src="{{ asset('image/logo/poliwangiBem.png') }}" alt="logo"
@@ -117,7 +117,7 @@
             </div>
         </div>
     </header>
-    <main class="mx-auto scroll-smooth overflow-hidden">
+    <main class="pt-20 mx-auto scroll-smooth overflow-hidden z-10">
         @yield('content')
     </main>
 
@@ -138,7 +138,7 @@
                 </a></li>
             </ul>
 
-            <p class="text-base">&copy; 2023 Badan Eksekutif Mahasiswa POLIWANGI</p>
+            <p class="text-base">&copy; 2024 Badan Eksekutif Mahasiswa POLIWANGI</p>
 
         </div>
     </footer>
