@@ -46,27 +46,6 @@
                 <div
                     class="lg:!flex lg:flex-auto max-lg:fixed max-lg:bg-white max-lg:w-1/2 max-lg:min-w-[300px] max-lg:top-0 max-lg:left-0 max-lg:p-6 max-lg:h-full max-lg:shadow-md max-lg:overflow-auto z-50">
 
-                    {{-- <ul class='lg:flex lg:gap-x-8 max-lg:space-y-2'>
-                        <li class='mb-6 hidden max-lg:block'>
-                            <a href="javascript:void(0)"><img src="https://readymadeui.com/readymadeui.svg"
-                                    alt="logo" class='w-36' />
-                            </a>
-                        </li>
-                        <li class='max-lg:border-b max-lg:py-3'>
-                            <a href='javascript:void(0)'
-                                class='hover:text-[#007bff] text-[#007bff] block font-bold text-[15px]'>Home</a>
-                        </li>
-                        <li class='max-lg:border-b max-lg:py-3'><a href='javascript:void(0)'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Shop</a>
-                        </li>
-                        <li class='max-lg:border-b max-lg:py-3'><a href='javascript:void(0)'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Sale</a>
-                        </li>
-                        <li class='max-lg:border-b max-lg:py-3'><a href='javascript:void(0)'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>Manage</a>
-                        </li>
-                    </ul> --}}
-
                     <ul class='lg:flex lg:items-center  max-lg:block lg:space-x-8 ml-auto'>
                         <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'>
                             <a href='{{route('landingpage')}}'
@@ -76,9 +55,9 @@
                             <a href='{{route('kastrat')}}'
                                 class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>KASTRAT MEDIA</a>
                         </li>
-                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{route('struktur')}}'
+                        {{-- <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{route('struktur')}}'
                                 class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>STRUKTUR</a>
-                        </li>
+                        </li> --}}
                         <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{route('tupoksi')}}'
                                 class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>TUPOKSI</a>
                         </li>
@@ -124,9 +103,9 @@
             </div>
 
             <div class='flex items-center ml-10 space-x-6'>
-                <button
-                    class='px-4 py-2.5 text-sm rounded font-bold text-white border-2 border-[#1d294f] bg-[#1d294f] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1d294f]'>
-                    LAPOR KESMA</button>
+                <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTDuzEALGXoMWpHUgAwL0DOp3kDgPVoEF0rdEOOc75ffpEZQ/viewform?fbclid=PAY2xjawG-RHxleHRuA2FlbQIxMQABpqsKfHzaSgPuPFsv8xArs5xi2ZuOrwdMvIBgGgiRUrpzLX-5RQ2iJiV0sw_aem_CBpoH0-x1Fv8kydX5TYhcA"
+                target="_blank" class='px-4 py-2.5 text-sm rounded font-bold text-white border-2 border-[#1d294f] bg-[#1d294f] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1d294f]'>
+                    LAPOR KESMA</a>
 
                 <button id="toggleOpen" class='lg:hidden'>
                     <svg class="w-7 h-7" fill="#000" viewBox="0 0 20 20" xmlns="http://www.w3.org/2000/svg">

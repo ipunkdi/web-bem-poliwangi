@@ -28,6 +28,6 @@ class DatabaseSeeder extends Seeder
             'password' => bcrypt('password')
         ]);
 
-        Kastrat::factory(20)->create();
+        // Kastrat::factory(20)->create();
     }
 }

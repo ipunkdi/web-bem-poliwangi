@@ -11,18 +11,14 @@ Route::get('/', function () {
 })->name('landingpage');
 
 
-Route::get('/tupoksi', function () {
-    return view('tupoksi');
-})->name('tupoksi');
+Route::get('/tupoksi', [DashboardKementerianController::class, 'tupoksi'])->name('tupoksi');
 
 
-Route::get('/struktur', function () {
-    return view('struktur');
-})->name('struktur');
+// Route::get('/struktur', function () {
+//     return view('struktur');
+// })->name('struktur');
 
-Route::get('/kastrat-media', function () {
-    return view('kastratMedia');
-})->name('kastrat');
+Route::get('/kastrat-media', [DashboardKastratController::class, 'kastratMedia'])->name('kastrat');
 
 
 

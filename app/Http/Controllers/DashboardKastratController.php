@@ -14,6 +14,13 @@ class DashboardKastratController extends Controller
     /**
      * Display a listing of the resource.
      */
+
+    public function kastratMedia()
+    {
+        $data = Kastrat::all();
+        return view('kastratMedia',compact('data'));
+    }
+    
     public function index()
     {
         return view('dashboard.kastrats.index', [
@@ -41,11 +48,15 @@ class DashboardKastratController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:kastrats',
             'image' => 'required|image|file|max:5120',
+            'pdf' => 'required|file|mimes:pdf|max:10200',
             'body' => 'required'
         ]);
         
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('kastrat-images');
+        }
+        if ($request->file('pdf')) {
+            $validatedData['pdf'] = $request->file('pdf')->store('kastrat-pdf');
         }
         
         $validatedData['user_id'] = auth()->user()->id;

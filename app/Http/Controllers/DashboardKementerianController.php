@@ -12,6 +12,11 @@ class DashboardKementerianController extends Controller
     /**
      * Display a listing of the resource.
      */
+    public function tupoksi(){
+        $data = Kementerian::all();
+
+        return view('tupoksi', compact('data'));
+    }
     public function index()
     {
         return view('dashboard.kementerians.index', [
@@ -42,8 +47,9 @@ class DashboardKementerianController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('kementerian-images');
+            $validatedData['image'] = $request->file('image')->store('/kementerian-images');
         }
+        // $validatedData['description'] = strip_tags($validatedData['description']);
 
         Kementerian::create($validatedData);
 
