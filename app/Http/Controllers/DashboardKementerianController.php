@@ -17,11 +17,31 @@ class DashboardKementerianController extends Controller
 
         return view('tupoksi', compact('data'));
     }
-    public function index()
+
+    public function header(){
+        $data = Kementerian::all();
+
+        return view('layout.pages', [
+            'data' => $data,
+        ]);
+    }
+    public function index(Request $request)
     {
+        if ($request->Filter == 'newest') {
+            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->get();
+        } else if ($request->Filter == 'oldest') {
+            $dataKementerian = Kementerian::orderBy('created_at', 'asc')->get();
+        } else {
+            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->get();
+        }
+
+        if(!empty($request->search)) {
+            $dataKementerian = Kementerian::where('name', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
+        }
+
         return view('dashboard.kementerians.index', [
-            'title' => 'Kastrat',
-            'kementerians' => Kementerian::all()
+            'title' => 'Kementerian',
+            'kementerians' => $dataKementerian
         ]);
     }
 

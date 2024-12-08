@@ -80,17 +80,18 @@
                                             <div class="absolute right-0 w-56 mt-2 origin-top-right bg-white border border-gray-200 divide-y divide-gray-100 rounded-md shadow-lg outline-none"
                                                 aria-labelledby="headlessui-menu-button-1"
                                                 id="headlessui-menu-items-117" role="menu">
-                                                
                                                 <div class="py-1">
-                                                    <a href="" tabindex="0"
-                                                        class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
-                                                        role="menuitem">DALAM NEGERI</a>
-                                                    <a href="" tabindex="1"
-                                                        class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
-                                                        role="menuitem">LUAR NEGERI</a>
-                                                    <a href="" tabindex="2"
-                                                        class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
-                                                        role="menuitem">MEDIA DIGITAL INFORMASI</a>
+                                                @if (!empty($data[0]))
+                                                @foreach ($data as $Data)
+                                                    <a href="" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem">
+                                                        {{$Data->name}}
+                                                    </a>
+                                                @endforeach
+                                                @else
+                                                <p href="" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem">
+                                                    Tidak Ada Data
+                                                </p>
+                                                @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -134,7 +135,7 @@
                         <img src="{{ asset('image/logo/insta.png') }}" class="w-9" alt="instagram"></a></li>
 
                 <li><a href="javascript:void(0)" class="text-xl hover:text-gray-400">
-                        <img src="{{ asset('image/logo/tiktok.png') }}" class="w-9" alt="tiktok"></a></li>    
+                        <img src="{{ asset('image/logo/tiktok.png') }}" class="w-9" alt="tiktok"></a></li>
                 </a></li>
             </ul>
 

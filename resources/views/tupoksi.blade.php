@@ -2,12 +2,14 @@
 @section('title', 'Tupoksi Kementerian')
 @section('content')
 
-    @foreach ( $data as $kementerian) 
+    @foreach ( $data as $kementerian)
     <div class="flex items-center justify-center bg-slate-600 px-8 py-20 h-auto  ">
-        <img src="storage/{{ $kementerian->image }}" alt="Luar Negeri Logo" class="w-56 h-56 mr-4">
+        <div class="w-56 h-56 mr-4 overflow-hidden">
+            <img src="storage/{{ $kementerian->image }}" alt="Luar Negeri Logo" class="w-full h-full">
+        </div>
         <div class="w-1/2 ml-24">
-            <p class="font-bold text-white">KEMENTERIAN</p>
-            <h1 class="text-3xl font-bold -mt-2 text-white">{{ $kementerian->name }}</h1>
+            <p class="text-sm text-white">Kementerian</p>
+            <h1 class="text-3xl font-bold -mt-2 mb-5 text-white">{{ $kementerian->name }}</h1>
             <article class="text-white">{!! $kementerian->description !!}</article>
         </div>
     </div>

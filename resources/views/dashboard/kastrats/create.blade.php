@@ -41,27 +41,33 @@
                     <div class="w-full">
                         <label for="slug" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Slug</label>
                         <input type="text" name="slug" id="slug" class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-primary-600 focus:border-primary-600 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-primary-500 dark:focus:border-primary-500" required readonly value="{{ old('slug') }}">
-                    </div>  
+                    </div>
                     @error('slug')
                         <p class="text-xs text-red-500">{{ $message }}</p>
-                    @enderror             
+                    @enderror
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="image">Post image <span class="text-xs ml-4 text-red-500">Maksimal gambar 5mb</span></label>
                         <img class="img-preview h-auto max-w-xs mb-3 col-sm-5">
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400" aria-describedby="image" id="image" type="file" name="image" onchange="previewImage()">
                     </div>
-                    @error('slug')
+                    @error('image')
                         <p class="text-xs text-red-500">{{ $message }}</p>
-                    @enderror 
+                    @enderror
                     <div class="sm:col-span-2">
                         <label class="block mb-2 text-sm font-medium text-gray-900 dark:text-white" for="pdf">File PDF <span class="text-xs ml-4 text-red-500">Maksimal file 5mb</span></label>
                         <input class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400"  id="pdf" type="file" name="pdf">
                     </div>
+                    @error('pdf')
+                        <p class="text-xs text-red-500">{{ $message }}</p>
+                    @enderror
                     <div class="sm:col-span-2">
                         <label for="body" class="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Body</label>
                         <input id="body" type="hidden" name="body" value="{{ old('body') }}">
                         <trix-editor input="body"></trix-editor>
                     </div>
+                    @error('body')
+                        <p class="text-xs text-red-500">{{ $message }}</p>
+                    @enderror
                 </div>
                 <button type="submit" class="inline-flex items-center px-5 py-2.5 mt-4 sm:mt-6 text-sm font-medium text-center text-white bg-primary-700 rounded-lg focus:ring-4 focus:ring-primary-200 dark:focus:ring-primary-900 hover:bg-primary-800">
                     Create
@@ -98,5 +104,5 @@
             }
         }
     </script>
-    
+
 @endsection

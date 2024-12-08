@@ -5,9 +5,13 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardKastratController;
 use App\Http\Controllers\DashboardKementerianController;
+use App\Models\Kementerian;
 
 Route::get('/', function () {
-    return view('landingpage');
+
+    return view('landingpage',[
+        'data' => Kementerian::all(),
+    ]);
 })->name('landingpage');
 
 
