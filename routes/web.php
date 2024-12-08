@@ -5,12 +5,26 @@ use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\DashboardKastratController;
 use App\Http\Controllers\DashboardKementerianController;
+use App\Models\Kementerian;
 
 Route::get('/', function () {
-    return view('home', [
-        'title' => 'Home'
+
+    return view('landingpage',[
+        'data' => Kementerian::all(),
     ]);
-});
+})->name('landingpage');
+
+
+Route::get('/tupoksi', [DashboardKementerianController::class, 'tupoksi'])->name('tupoksi');
+
+
+// Route::get('/struktur', function () {
+//     return view('struktur');
+// })->name('struktur');
+
+Route::get('/kastrat-media', [DashboardKastratController::class, 'kastratMedia'])->name('kastrat');
+
+
 
 // Register
 Route::get('/register', [RegisterController::class, 'index'])->middleware('guest');

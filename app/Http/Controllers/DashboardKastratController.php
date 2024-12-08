@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Exception;
 use App\Models\Kastrat;
+use App\Models\Kementerian;
 use Illuminate\Support\Str;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
@@ -14,8 +15,31 @@ class DashboardKastratController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+
+    public function kastratMedia()
     {
+        $dataKastrat = Kastrat::orderBy('created_at', 'desc')->get();
+
+        return view('kastratMedia', [
+            'dataKastrat' => $dataKastrat,
+            'data' => Kementerian::all()
+        ]);
+    }
+
+    public function index(Request $request)
+    {
+        if ($request->Filter == 'newest') {
+            $dataKastrat = Kastrat::orderBy('created_at', 'desc')->get();
+        } else if ($request->Filter == 'oldest') {
+            $dataKastrat = Kastrat::orderBy('created_at', 'asc')->get();
+        } else {
+            $dataKastrat = Kastrat::orderBy('created_at', 'desc')->get();
+        }
+
+        if(!empty($request->search)) {
+            $dataKastrat = Kastrat::where('title', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
+        }
+
         return view('dashboard.kastrats.index', [
             'title' => 'Kastrat',
             'kastrats' => Kastrat::latest()->paginate(10)
@@ -41,18 +65,22 @@ class DashboardKastratController extends Controller
             'title' => 'required|max:255',
             'slug' => 'required|unique:kastrats',
             'image' => 'required|image|file|max:5120',
+            'pdf' => 'required|file|mimes:pdf|max:10200',
             'body' => 'required'
         ]);
-        
+
         if ($request->file('image')) {
             $validatedData['image'] = $request->file('image')->store('kastrat-images');
         }
-        
+        if ($request->file('pdf')) {
+            $validatedData['pdf'] = $request->file('pdf')->store('kastrat-pdf');
+        }
+
         $validatedData['user_id'] = auth()->user()->id;
         $validatedData['excerpt'] = Str::limit(strip_tags($request->body), 200);
-        
+
         Kastrat::create($validatedData);
-    
+
 
         return redirect('/dashboard/kastrats')->with('success', 'New post has been added!');
     }

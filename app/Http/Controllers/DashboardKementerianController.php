@@ -12,11 +12,37 @@ class DashboardKementerianController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function tupoksi(){
+        $data = Kementerian::all();
+
+        return view('tupoksi', compact('data'));
+    }
+
+    public function header(){
+        $data = Kementerian::all();
+
+        return view('layout.pages', [
+            'data' => $data,
+        ]);
+    }
+    public function index(Request $request)
     {
+        if ($request->Filter == 'newest') {
+            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->get();
+        } else if ($request->Filter == 'oldest') {
+            $dataKementerian = Kementerian::orderBy('created_at', 'asc')->get();
+        } else {
+            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->get();
+        }
+
+        if(!empty($request->search)) {
+            $dataKementerian = Kementerian::where('name', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
+        }
+
         return view('dashboard.kementerians.index', [
             'title' => 'Kementerian',
             'kementerians' => Kementerian::latest()->paginate(10)
+
         ]);
     }
 
@@ -42,8 +68,9 @@ class DashboardKementerianController extends Controller
         ]);
 
         if ($request->file('image')) {
-            $validatedData['image'] = $request->file('image')->store('kementerian-images');
+            $validatedData['image'] = $request->file('image')->store('/kementerian-images');
         }
+        // $validatedData['description'] = strip_tags($validatedData['description']);
 
         Kementerian::create($validatedData);
 
