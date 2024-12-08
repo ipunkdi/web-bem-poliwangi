@@ -29,20 +29,20 @@ class DashboardKastratController extends Controller
     public function index(Request $request)
     {
         if ($request->Filter == 'newest') {
-            $dataKastrat = Kastrat::orderBy('created_at', 'desc')->get();
+            $dataKastrat = Kastrat::orderBy('created_at', 'desc')->paginate(10);
         } else if ($request->Filter == 'oldest') {
-            $dataKastrat = Kastrat::orderBy('created_at', 'asc')->get();
+            $dataKastrat = Kastrat::orderBy('created_at', 'asc')->paginate(10);
         } else {
-            $dataKastrat = Kastrat::orderBy('created_at', 'desc')->get();
+            $dataKastrat = Kastrat::orderBy('created_at', 'desc')->paginate(10);
         }
 
         if(!empty($request->search)) {
-            $dataKastrat = Kastrat::where('title', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
+            $dataKastrat = Kastrat::where('title', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->paginate(10);
         }
 
         return view('dashboard.kastrats.index', [
             'title' => 'Kastrat',
-            'kastrats' => Kastrat::latest()->paginate(10)
+            'kastrats' => $dataKastrat
         ]);
     }
 
