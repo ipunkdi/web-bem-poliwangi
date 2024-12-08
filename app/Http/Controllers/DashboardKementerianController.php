@@ -12,13 +12,15 @@ class DashboardKementerianController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function tupoksi(){
+    public function tupoksi()
+    {
         $data = Kementerian::all();
 
         return view('tupoksi', compact('data'));
     }
 
-    public function header(){
+    public function header()
+    {
         $data = Kementerian::all();
 
         return view('layout.pages', [
@@ -28,20 +30,20 @@ class DashboardKementerianController extends Controller
     public function index(Request $request)
     {
         if ($request->Filter == 'newest') {
-            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->get();
+            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->paginate(10);
         } else if ($request->Filter == 'oldest') {
-            $dataKementerian = Kementerian::orderBy('created_at', 'asc')->get();
+            $dataKementerian = Kementerian::orderBy('created_at', 'asc')->paginate(10);
         } else {
-            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->get();
+            $dataKementerian = Kementerian::orderBy('created_at', 'desc')->paginate(10);
         }
 
-        if(!empty($request->search)) {
-            $dataKementerian = Kementerian::where('name', 'like', '%'.$request->search.'%')->orderBy('created_at', 'desc')->get();
+        if (!empty($request->search)) {
+            $dataKementerian = Kementerian::where('name', 'like', '%' . $request->search . '%')->orderBy('created_at', 'desc')->paginate(10);
         }
 
         return view('dashboard.kementerians.index', [
             'title' => 'Kementerian',
-            'kementerians' => Kementerian::latest()->paginate(10)
+            'kementerians' => $dataKementerian
 
         ]);
     }
@@ -113,14 +115,14 @@ class DashboardKementerianController extends Controller
         $validatedData = $request->validate($rules);
 
         if ($request->file('image')) {
-            if($request->oldImage) {
+            if ($request->oldImage) {
                 Storage::delete($request->oldImage);
             }
             $validatedData['image'] = $request->file('image')->store('kementerian-images');
         }
 
         Kementerian::where('id', $kementerian->id)
-                    ->update($validatedData);
+            ->update($validatedData);
 
         return redirect('/dashboard/kementerians')->with('success', 'Kementerian has been updated!');
     }
@@ -130,6 +132,10 @@ class DashboardKementerianController extends Controller
      */
     public function destroy(Kementerian $kementerian)
     {
-        //
+        if ($kementerian->image) {
+            Storage::delete($kementerian->image);
+        }
+        Kementerian::destroy($kementerian->id);
+        return redirect('/dashboard/kementerians')->with('success', 'Post has been deleted!');
     }
 }

@@ -20,14 +20,14 @@
 </head>
 
 <body>
-    <header class='fixed flex right-0 left-0 border-b py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide z-50'>
+    <header
+        class='fixed flex right-0 left-0 border-b py-4 px-4 sm:px-10 bg-white font-sans min-h-[70px] tracking-wide z-50'>
         <div class='flex flex-wrap items-center gap-4 w-full'>
-            <a href="javascript:void(0)" class="flex">
-                <img src="{{ asset('image/logo/poliwangiBem.png') }}" alt="logo"
-                    class='w-14' />
-                    <span class="font-bold pt-2 pl-6 block">Badan Eksekutif Mahasiswa
-                        <span class="block font-medium text-sm" >Politeknik Negeri Banyuwangi</span>
-                    </span>
+            <a href="" class="flex">
+                <img src="{{ asset('image/logo/poliwangiBem.png') }}" alt="logo" class='w-14' />
+                <span class="font-bold pt-2 pl-6 block">Badan Eksekutif Mahasiswa
+                    <span class="block font-medium text-sm">Politeknik Negeri Banyuwangi</span>
+                </span>
             </a>
 
             <div id="collapseMenu"
@@ -48,24 +48,25 @@
 
                     <ul class='lg:flex lg:items-center  max-lg:block lg:space-x-8 ml-auto'>
                         <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'>
-                            <a href='{{route('landingpage')}}'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>HOME</a>
+                            <a href='{{ route('landingpage') }}'
+                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px] {{ Route::is('landingpage') ? 'text-[#007bff]' : '' }}'>HOME</a>
                         </li>
                         <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'>
-                            <a href='{{route('kastrat')}}'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>KASTRAT MEDIA</a>
+                            <a href='{{ route('kastrat') }}'
+                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px] {{ Route::is('kastrat') ? 'text-[#007bff]' : '' }}'>KASTRAT
+                                MEDIA</a>
                         </li>
                         {{-- <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{route('struktur')}}'
                                 class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>STRUKTUR</a>
                         </li> --}}
-                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{route('tupoksi')}}'
-                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px]'>TUPOKSI</a>
+                        <li class='max-lg:border-b max-lg:py-3 max-lg:mt-2 block'><a href='{{ route('tupoksi') }}'
+                                class='hover:text-[#007bff] text-gray-600 block font-bold text-[15px] {{ Route::is('tupoksi') ? 'text-[#007bff]' : '' }}'>TUPOKSI</a>
                         </li>
                         <li>
                             <div class="-ms-12 bg-transparent flex flex-col justify-center">
                                 <div class="flex items-center justify-center">
                                     <div class="relative inline-block text-left dropdown">
-                                        <span class="rounded-md shadow-sm"><button
+                                        <span class="rounded-md"><button
                                                 class="inline-flex justify-center w-full py-2 text-sm font-medium leading-5 text-gray-700 transition duration-150 ease-in-out bg-transparent  rounded-md  focus:outline-none focus:border-blue-300 focus:shadow-outline-blue "
                                                 type="button" aria-haspopup="true" aria-expanded="true"
                                                 aria-controls="headlessui-menu-items-117">
@@ -81,17 +82,21 @@
                                                 aria-labelledby="headlessui-menu-button-1"
                                                 id="headlessui-menu-items-117" role="menu">
                                                 <div class="py-1">
-                                                @if (!empty($data[0]))
-                                                @foreach ($data as $Data)
-                                                    <a href="" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem">
-                                                        {{$Data->name}}
-                                                    </a>
-                                                @endforeach
-                                                @else
-                                                <p href="" tabindex="0" class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left" role="menuitem">
-                                                    Tidak Ada Data
-                                                </p>
-                                                @endif
+                                                    @if (!empty($data[0]))
+                                                        @foreach ($data as $Data)
+                                                            <a href="{{ route('tupoksi') }}" tabindex="0"
+                                                                class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
+                                                                role="menuitem">
+                                                                {{ $Data->name }}
+                                                            </a>
+                                                        @endforeach
+                                                    @else
+                                                        <p href="" tabindex="0"
+                                                            class="text-gray-700 flex justify-between w-full px-4 py-2 text-sm leading-5 text-left"
+                                                            role="menuitem">
+                                                            Tidak Ada Data
+                                                        </p>
+                                                    @endif
                                                 </div>
                                             </div>
                                         </div>
@@ -105,7 +110,8 @@
 
             <div class='flex items-center ml-10 space-x-6'>
                 <a href="https://docs.google.com/forms/d/e/1FAIpQLSeTDuzEALGXoMWpHUgAwL0DOp3kDgPVoEF0rdEOOc75ffpEZQ/viewform?fbclid=PAY2xjawG-RHxleHRuA2FlbQIxMQABpqsKfHzaSgPuPFsv8xArs5xi2ZuOrwdMvIBgGgiRUrpzLX-5RQ2iJiV0sw_aem_CBpoH0-x1Fv8kydX5TYhcA"
-                target="_blank" class='px-4 py-2.5 text-sm rounded font-bold text-white border-2 border-[#1d294f] bg-[#1d294f] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1d294f]'>
+                    target="_blank"
+                    class='px-4 py-2.5 text-sm rounded font-bold text-white border-2 border-[#1d294f] bg-[#1d294f] transition-all ease-in-out duration-300 hover:bg-transparent hover:text-[#1d294f]'>
                     LAPOR KESMA</a>
 
                 <button id="toggleOpen" class='lg:hidden'>
@@ -127,16 +133,23 @@
             <h6 class="text-base">Stay connected with us:</h6>
 
             <ul class="flex flex-wrap justify-center gap-x-8 gap-4 my-8">
-                <li><a href="javascript:void(0)" class="text-xl hover:text-gray-400">
-                        <img src="{{ asset('image/logo/facebook.png') }}" class="w-8" alt="facebook"></a></li>
-                    </a></li>
+                <li>
+                    <a href="" class="text-xl hover:text-gray-400">
+                        <img src="{{ asset('icons/youtube-brands-solid.svg') }}" class="w-10 h-10" alt="youtube">
+                    </a>
+                </li>
 
-                <li><a href="https://www.instagram.com/bempoliwangi/" class="text-xl hover:text-gray-400">
-                        <img src="{{ asset('image/logo/insta.png') }}" class="w-9" alt="instagram"></a></li>
+                <li>
+                    <a href="https://www.instagram.com/bempoliwangi/" class="text-xl hover:text-gray-400">
+                        <img src="{{ asset('icons/instagram-brands-solid.svg') }}" class="w-9 h-9" alt="instagram">
+                    </a>
+                </li>
 
-                <li><a href="javascript:void(0)" class="text-xl hover:text-gray-400">
-                        <img src="{{ asset('image/logo/tiktok.png') }}" class="w-9" alt="tiktok"></a></li>
-                </a></li>
+                <li>
+                    <a href="" class="https://www.tiktok.com/@bem.poliwangi?_t=8s3CWvDZgBT&_r=1">
+                        <img src="{{ asset('icons/tiktok-brands-solid.svg') }}" class="w-8 h-8" alt="tiktok">
+                    </a>
+                </li>
             </ul>
 
             <p class="text-base">&copy; 2024 Badan Eksekutif Mahasiswa POLIWANGI</p>

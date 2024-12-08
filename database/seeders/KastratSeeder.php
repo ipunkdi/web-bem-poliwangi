@@ -13,6 +13,6 @@ class KastratSeeder extends Seeder
      */
     public function run(): void
     {
-       
+        
     }
 }
