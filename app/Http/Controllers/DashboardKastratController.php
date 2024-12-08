@@ -18,7 +18,7 @@ class DashboardKastratController extends Controller
     {
         return view('dashboard.kastrats.index', [
             'title' => 'Kastrat',
-            'kastrats' => Kastrat::all()
+            'kastrats' => Kastrat::latest()->paginate(10)
         ]);
     }
 

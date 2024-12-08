@@ -15,8 +15,8 @@ class DashboardKementerianController extends Controller
     public function index()
     {
         return view('dashboard.kementerians.index', [
-            'title' => 'Kastrat',
-            'kementerians' => Kementerian::all()
+            'title' => 'Kementerian',
+            'kementerians' => Kementerian::latest()->paginate(10)
         ]);
     }
 

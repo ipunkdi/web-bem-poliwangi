@@ -41,21 +41,11 @@
             <div style="max-height: 350px; overflow:hidden">
                 <img src="{{ asset('storage/' . $kastrat->image) }}" alt="{{ $kastrat->title }}" class="img-fluid mt-3">
             </div>
-            <h2 class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">Apple iMac 25"</h2>
-            <p class="mb-4 text-xl font-extrabold leading-none text-gray-900 md:text-2xl dark:text-white">$2999</p>
+            <h2 class="mb-2 text-xl font-semibold leading-none text-gray-900 md:text-2xl dark:text-white">{{ $kastrat->title }}</h2>
+            <p class="mb-4 text-xl font-extrabold leading-none text-gray-900 md:text-2xl dark:text-white">{{ $kastrat->slug }}</p>
             <dl>
-                <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Details</dt>
-                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Standard glass ,3.8GHz 8-core 10th-generation Intel Core i7 processor, Turbo Boost up to 5.0GHz, 16GB 2666MHz DDR4 memory, Radeon Pro 5500 XT with 8GB of GDDR6 memory, 256GB SSD storage, Gigabit Ethernet, Magic Mouse 2, Magic Keyboard - US.</dd>
-            </dl>
-            <dl class="flex items-center space-x-6">
-                <div>
-                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Category</dt>
-                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">Electronics/PC</dd>
-                </div>
-                <div>
-                    <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Item weight</dt>
-                    <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">12kg</dd>
-                </div>
+                <dt class="mb-2 font-semibold leading-none text-gray-900 dark:text-white">Body</dt>
+                <dd class="mb-4 font-light text-gray-500 sm:mb-5 dark:text-gray-400">{{ $kastrat->body }}</dd>
             </dl>
             <div class="flex items-center space-x-4">
                 <a href="/dashboard/kastrats/{{ $kastrat->slug }}/edit" class="text-white inline-flex items-center bg-primary-700 hover:bg-primary-800 focus:ring-4 focus:outline-none focus:ring-primary-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-primary-600 dark:hover:bg-primary-700 dark:focus:ring-primary-800">

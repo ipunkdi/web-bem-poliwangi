@@ -38,7 +38,7 @@
 
 <section class="bg-white dark:bg-gray-900">
     <div class="max-w-2xl px-4 py-8 mx-auto lg:py-16">
-        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Update product</h2>
+        <h2 class="mb-4 text-xl font-bold text-gray-900 dark:text-white">Update kastrat</h2>
         <form action="/dashboard/kastrats/{{ $kastrat->slug }}" method="POST" enctype="multipart/form-data">
             @method('put')
             @csrf
