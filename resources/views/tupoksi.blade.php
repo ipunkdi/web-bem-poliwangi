@@ -8,7 +8,6 @@
             <img src="storage/{{ $kementerian->image }}" alt="Logo" class="w-full h-full">
         </div>
         <div class="w-1/2 ml-24">
-            <p class="text-sm text-white">Kementerian</p>
             <h1 class="text-3xl font-bold -mt-2 mb-5 text-white">{{ $kementerian->name }}</h1>
             <article class="text-white">{!! $kementerian->description !!}</article>
         </div>
