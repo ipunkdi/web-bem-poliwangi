@@ -22,10 +22,10 @@ class DatabaseSeeder extends Seeder
         // ]);
 
         User::create([
-            'name' => 'Dafa Ifaldi',
-            'username' => 'ipunkdi',
-            'email' => 'dafaifaldi25@gmail.com',
-            'password' => bcrypt('password')
+            'name' => 'Admin',
+            'username' => 'admin',
+            'email' => 'medinfoworkbench@gmail.com',
+            'password' => bcrypt('aviskaraAdhigana2024!')
         ]);
 
         // Kastrat::factory(20)->create();

@@ -15,7 +15,7 @@ return new class extends Migration
             $table->id();
             $table->string('name')->required();
             $table->string('image')->required();
-            $table->string('description')->required();
+            $table->longText('description')->required();
             $table->timestamps();
         });
     }
